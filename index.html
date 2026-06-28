@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Ammu ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="galaxy-bg" id="galaxy"></div>
+    <div class="sparkle-layer" id="sparkle-layer"></div>
+
+    <div id="loading-screen" class="scene active">
+        <div class="loading-box">
+            <p id="loading-text">Loading memories...</p>
+            <div class="progress-bar"><div id="progress"></div></div>
+            <p id="counter">0%</p>
+        </div>
+    </div>
+
+    <div id="scene-1" class="scene">
+        <div class="heart-container">
+            <p class="typing-text" id="scene1-text"></p>
+            <div class="beating-heart" id="start-button">❤️</div>
+        </div>
+    </div>
+
+    <div id="scene-2" class="scene">
+        <h2 class="scene-title">Our Precious Memories ✨</h2>
+        <div class="memory-space">
+            <div class="memory-card" style="--delay: 0s;">🌸 "Our first smile, Suchi Ma."</div>
+            <div class="memory-card" style="--delay: 2.5s;">❤️ "Our first laugh, Thango."</div>
+            <div class="memory-card" style="--delay: 5s;">✨ "Our first dream, Ammu."</div>
+        </div>
+        <button id="to-scene3" class="next-btn">Fly Forward ➔</button>
+    </div>
+
+    <div id="scene-3" class="scene">
+        <div class="rain-container" id="rain-layer"></div>
+        <p class="typing-text" id="scene3-text"></p>
+        <div class="kintsugi-container">
+            <div class="kintsugi-heart" id="repair-heart">💔</div>
+        </div>
+        <button id="to-scene4" class="next-btn hidden">Walk to the Garden ➔</button>
+    </div>
+
+    <div id="scene-4" class="scene">
+        <h2 class="scene-title">Our Promise Garden 🌸</h2>
+        <p class="instruction">Click each promise to plant a glowing flower, my Chello...</p>
+        <div class="promise-buttons">
+            <button class="promise-btn" data-flower="❤️">Understand you, Suchi Ma</button>
+            <button class="promise-btn" data-flower="🌷">Respect you, Thango</button>
+            <button class="promise-btn" data-flower="🌹">Protect your peace, Ammu</button>
+            <button class="promise-btn" data-flower="🌸">Love you patiently, Chello</button>
+            <button class="promise-btn" data-flower="🌼">Make you smile always</button>
+        </div>
+        <div class="garden-bed" id="garden-bed"></div>
+        <p class="garden-message" id="garden-msg"></p>
+        <button id="to-scene5" class="next-btn hidden">Catch the Wishes ➔</button>
+    </div>
+
+    <div id="scene-5" class="scene">
+        <h2 class="scene-title">Butterfly Wishes 🦋</h2>
+        <p class="instruction">Click the drifting butterflies to reveal secrets...</p>
+        <div class="butterfly-area" id="butterfly-area"></div>
+        <div class="wish-popup" id="wish-popup"></div>
+        <button id="to-scene6" class="next-btn hidden">Step into Tomorrow ➔</button>
+    </div>
+
+    <div id="scene-6" class="scene">
+        <div class="sky-background" id="sky-bg"></div>
+        <div class="walk-container">
+            <p class="typing-text" id="scene6-text">A hopeful new day begins...</p>
+            <button id="walk-forward-btn" class="next-btn">Walk Forward 🚶‍♂️</button>
+        </div>
+        <button id="to-scene7" class="next-btn hidden">Open the Mail ➔</button>
+    </div>
+
+    <div id="scene-7" class="scene">
+        <div class="envelope-container" id="envelope-wrapper">
+            <div class="envelope" id="envelope">💌</div>
+            <p id="env-hint">Click the envelope to open it</p>
+        </div>
+        <div class="letter-box hidden" id="letter-box">
+            <div class="letter-content" id="letter-text"></div>
+        </div>
+        <button id="to-final" class="next-btn hidden">Make a Wish ⭐</button>
+    </div>
+
+    <div id="scene-final" class="scene">
+        <div class="shooting-star" id="sstar"></div>
+        <p class="typing-text" id="final-text">Make a wish, Suchi Ma...</p>
+        <button id="wish-btn" class="next-btn">⭐ My Wish</button>
+        <div class="final-hearts hidden" id="final-hearts">
+            <div class="beating-heart animation-heart">❤️</div>
+            <div class="beating-heart animation-heart">❤️</div>
+        </div>
+        <p class="final-message" id="closing-msg"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
