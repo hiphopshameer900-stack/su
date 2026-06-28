@@ -1,0 +1,178 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0a0512;
+    color: #ffffff;
+    font-family: 'Georgia', serif;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Moving Galaxy Theme Background */
+.galaxy-bg {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at center, #2d0b26 0%, #0a0512 100%);
+    z-index: -2;
+    transition: background 3s ease;
+}
+
+/* Falling/Floating Hearts Background Engine */
+.bg-heart {
+    position: absolute;
+    color: rgba(255, 77, 109, 0.25);
+    font-size: var(--size);
+    left: var(--left);
+    bottom: -50px;
+    animation: floatUpHearts var(--duration) linear infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes floatUpHearts {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-105vh) rotate(360deg); opacity: 0; }
+}
+
+/* Sparkles Click Handler */
+.sparkle-layer {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 999;
+}
+
+.sparkle {
+    position: absolute;
+    width: 6px; height: 6px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #fff, 0 0 20px #ff4d6d;
+    animation: fadeOutSparkle 0.8s ease-out forwards;
+}
+
+@keyframes fadeOutSparkle {
+    0% { transform: translate(0,0) scale(1); opacity: 1; }
+    100% { transform: translate(var(--mx), var(--my)) scale(0); opacity: 0; }
+}
+
+/* Scene Manager Setup */
+.scene {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    display: flex; justify-content: center; align-items: center; flex-direction: column;
+    opacity: 0; pointer-events: none;
+    transition: opacity 1.2s ease-in-out, transform 1.2s ease-in-out;
+    padding: 20px;
+}
+
+.scene.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.hidden { display: none !important; }
+.instruction { color: #ffb3c1; margin-bottom: 20px; font-size: 0.95rem; font-style: italic; }
+
+/* Loading Bar Sequence */
+.loading-box { width: 280px; text-align: center; }
+.progress-bar { width: 100%; height: 4px; background-color: #251220; margin: 15px 0; border-radius: 2px; overflow: hidden; }
+#progress { width: 0%; height: 100%; background-color: #ff4d6d; transition: width 0.1s linear; }
+
+/* Global Interactive Text & Elements */
+.scene-title { font-size: 1.9rem; margin-bottom: 25px; color: #ff4d6d; text-shadow: 0 0 15px rgba(255, 77, 109, 0.6); }
+.typing-text { font-size: 1.25rem; min-height: 45px; max-width: 550px; line-height: 1.6; font-style: italic; color: #ffe5ec; text-shadow: 0 0 5px rgba(255,255,255,0.1); }
+.beating-heart { font-size: 5.5rem; cursor: pointer; display: inline-block; user-select: none; transition: transform 0.3s; filter: drop-shadow(0 0 15px #ff4d6d); }
+.animation-heart { animation: heartbeat 1.2s infinite; }
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    20% { transform: scale(1.18); }
+    40% { transform: scale(1); }
+    60% { transform: scale(1.12); }
+}
+
+/* Scene 2: Memories Layout */
+.memory-space { position: relative; width: 100%; max-width: 400px; height: 260px; display: flex; flex-direction: column; justify-content: space-around; align-items: center; }
+.memory-card { background: rgba(255, 77, 109, 0.1); border: 1px solid rgba(255, 179, 193, 0.2); padding: 14px 22px; border-radius: 25px; font-size: 1.1rem; backdrop-filter: blur(4px); opacity: 0; animation: floatUpward 7.5s ease-in-out infinite; animation-delay: var(--delay); box-shadow: 0 8px 20px rgba(0,0,0,0.3); color: #ffe5ec; }
+
+@keyframes floatUpward {
+    0% { opacity: 0; transform: translateY(45px) scale(0.95); }
+    20%, 80% { opacity: 1; transform: translateY(0px) scale(1); }
+    100% { opacity: 0; transform: translateY(-45px) scale(0.95); }
+}
+
+/* Scene 3: Rain overlays & Kintsugi Glows */
+.rain-container { position: absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; overflow:hidden; }
+.drop { position: absolute; width: 1px; height: 20px; background: rgba(174,194,224,0.4); animation: fall linear infinite; }
+@keyframes fall { 0% { transform: translateY(-50px); } 100% { transform: translateY(100vh); } }
+
+.kintsugi-heart { font-size: 6.5rem; transition: all 2s cubic-bezier(0.4, 0, 0.2, 1); user-select: none; }
+.kintsugi-heart.healed { text-shadow: 0 0 30px #ffd700, 0 0 50px #ff4d6d; transform: scale(1.05); filter: drop-shadow(0 0 15px rgba(255,215,0,0.6)); }
+
+/* Scene 4: Promise Fields */
+.promise-buttons { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; max-width: 480px; margin-bottom: 25px; }
+.promise-btn { background: rgba(255, 179, 193, 0.15); border: 1px solid rgba(255, 255, 255, 0.2); color: #fff; padding: 10px 18px; border-radius: 20px; cursor: pointer; transition: 0.3s; font-size: 0.95rem; }
+.promise-btn.clicked { opacity: 0.25; pointer-events: none; background: #ff4d6d; border-color: #ff4d6d; }
+.garden-bed { width: 100%; max-width: 420px; height: 110px; border-bottom: 2px solid #ff4d6d; display: flex; justify-content: center; align-items: flex-end; gap: 18px; font-size: 2.8rem; margin-bottom: 20px; }
+.garden-bed span { animation: growFlower 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; transform-origin: bottom; }
+@keyframes growFlower { 0% { transform: scale(0); } 100% { transform: scale(1); } }
+.garden-message { font-size: 1.25rem; color: #ffd700; min-height: 35px; text-shadow: 0 0 8px rgba(255,215,0,0.3); }
+
+/* Scene 5: Butterflies Space */
+.butterfly-area { position: relative; width: 100%; max-width: 500px; height: 280px; }
+.butterfly { position: absolute; font-size: 2.2rem; cursor: pointer; user-select: none; animation: flyPath 5s ease-in-out infinite alternate; filter: drop-shadow(0 0 8px rgba(255, 77, 109, 0.6)); transition: transform 0.2s; }
+.butterfly:hover { transform: scale(1.2); }
+.wish-popup { font-size: 1.3rem; color: #ffd700; min-height: 45px; margin-top: 20px; font-style: italic; text-shadow: 0 0 10px rgba(255,215,0,0.4); }
+
+@keyframes flyPath {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(80px, -40px) rotate(10deg); }
+    100% { transform: translate(-40px, -80px) rotate(-10deg); }
+}
+
+/* Scene 6: Sunrise Path Matrix */
+.sky-background { position: absolute; top:0; left:0; width:100%; height:100%; z-index:-1; transition: background 3.5s cubic-bezier(0.4, 0, 0.2, 1); background: transparent; }
+.sky-background.sunrise { background: linear-gradient(to top, #ffccd5 0%, #ff4d6d 40%, #2c0c4d 100%); }
+
+/* Scene 7: Emotional Handwriting Canvas */
+.envelope { font-size: 5.5rem; cursor: pointer; transition: transform 0.3s; user-select: none; filter: drop-shadow(0 0 10px #ff4d6d); }
+.envelope:hover { transform: scale(1.15) rotate(-5deg); }
+#env-hint { margin-top: 15px; font-size: 0.9rem; color: #ffb3c1; }
+.letter-box { background: #fffbfd; color: #2c2c2c; padding: 32px; border-radius: 12px; max-width: 480px; width: 92%; text-align: left; box-shadow: 0 15px 40px rgba(0,0,0,0.6); border: 1px solid #ffccd5; }
+.letter-content { font-family: 'Courier New', Courier, monospace; font-size: 1.05rem; line-height: 1.6; white-space: pre-wrap; font-weight: bold; }
+
+/* Final Sequence Designs */
+.shooting-star { position: absolute; top: 20%; left: -10%; width: 4px; height: 4px; background: #fff; border-radius: 50%; box-shadow: 0 0 10px #fff; opacity: 0; }
+.shooting-star.fire { animation: shootStar 1.5s linear forwards; }
+@keyframes shootStar {
+    0% { left: -10%; top: 20%; opacity: 1; width: 100px; }
+    100% { left: 110%; top: 60%; opacity: 0; width: 0px; }
+}
+.final-hearts { display: flex; gap: 25px; margin: 25px 0; }
+.final-message { font-size: 1.3rem; line-height: 1.7; font-weight: bold; color: #ff4d6d; text-shadow: 0 0 10px rgba(255,77,109,0.3); max-width: 500px; }
+
+/* Control Action Buttons */
+.next-btn { background: none; border: 1px solid #ff4d6d; color: #fff; padding: 11px 24px; border-radius: 25px; cursor: pointer; transition: all 0.3s ease; margin-top: 25px; font-size: 0.95rem; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+.next-btn:hover { background: #ff4d6d; box-shadow: 0 0 18px #ff4d6d; transform: translateY(-2px); }
+
+/* Mobile Adaptability Matrix */
+@media (max-width: 600px) {
+    .scene-title { font-size: 1.4rem; margin-bottom: 20px; }
+    .typing-text { font-size: 1.05rem; min-height: 38px; }
+    .beating-heart { font-size: 4.2rem; }
+    .kintsugi-heart { font-size: 4.8rem; }
+    .letter-box { padding: 22px; }
+    .garden-bed { max-width: 300px; font-size: 2.2rem; }
+}
